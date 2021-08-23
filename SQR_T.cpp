@@ -1,14 +1,3 @@
-/*
-Реализуйте шаблонную функцию Sqr, которая работает не только для чисел, но и для контейнеров. 
-Функция должна возвращать копию исходного контейнера, модифицировав его следующим образом:
- - для vector элементы нужно возвести в квадрат;
- - для map в квадрат нужно возвести только значения, но не ключи;
- - для pair в квадрат нужно возвести каждый элемент пары.
- 
- Функция должна корректно работать не только для контейнеров, состоящих из чисел, 
- но и для составных объектов, например, векторов словарей пар чисел.
-*/
-
 #include "pch.h"
 #include <iostream>
 #include <vector>
@@ -17,14 +6,17 @@
 
 using namespace std;
 
-template <typename T> vector<T> operator*(vector<T> lhs, vector<T> rhs);
 template <typename T> vector<T> sqr(vector<T> v);
 
 template <typename First, typename Second> pair<First, Second> sqr(pair<First, Second> p);
-template <typename First, typename Second> pair<First, Second> operator*(pair<First, Second> lhs, pair<First, Second> rhs);
 
 template <typename Key, typename Value> map<Key, Value> sqr(map<Key, Value> m);
 
+
+template <typename T> 
+T sqr(T x) { 
+	return x * x; 
+};
 
 template <typename Key, typename Value> 
 map<Key, Value> sqr(map<Key, Value> m) {
@@ -32,40 +24,21 @@ map<Key, Value> sqr(map<Key, Value> m) {
 	map<Key, Value> n;
 
 	for (auto p : m) {
-		n[p.first] = p.second * p.second;
+		n[p.first] = sqr(p.second);
 	}
 	
 	return n;
 }
-
-template <typename Key, typename Value>
-map<Key, Value> operator*(map<Key, Value> lhs, map<Key, Value> rhs) {
-	
-	map<Key, Value> n;
-
-	for (auto p : lhs) {
-		n[p.first] = lhs.second * // not done * overload for map
-	}
-
-	return n;
-}
-
 
 template <typename First, typename Second>
 pair<First, Second> sqr(pair<First, Second> p) {
 
 	pair<First, Second> n;
-	
-	n.first = p.first*p.first;
-	n.second = p.second*p.second;
+
+	n.first = sqr(p.first);
+	n.second = sqr(p.second);
 
 	return n;
-}
-
-
-template <typename First, typename Second>
-pair<First, Second> operator*(pair<First, Second> lhs, pair<First, Second> rhs) {
-	return { lhs.first*rhs.first, lhs.second*rhs.second };
 }
 
 
@@ -74,23 +47,7 @@ vector<T> sqr(vector<T> v) {
 	
 	vector<T> n;
 	for (auto x : v) {
-		n.push_back(x*x);
-	}
-
-	return n;
-}
-
-
-template <typename T>
-vector<T> operator*(vector<T> lhs, vector<T> rhs) {
-	
-	vector<T> n;
-	if (lhs.size() != rhs.size()) {
-		cout << "operator * is only defined for vectors of same size";
-	}
-
-	for (size_t i = 0; i < lhs.size(); i++) {
-		n.push_back(lhs.at(i)*rhs.at(i));
+		n.push_back(sqr(x));
 	}
 
 	return n;
