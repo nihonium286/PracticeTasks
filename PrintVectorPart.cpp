@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -7,7 +6,7 @@
 using namespace std;
 
 void PrintVectorPart(const vector<int>& numbers) {
-	auto f_it = find(numbers.begin(),
+	auto f_it = find_if(numbers.begin(),
 		numbers.end(),
 		[](const int& n) {
 		return n < 0;
@@ -17,11 +16,11 @@ void PrintVectorPart(const vector<int>& numbers) {
 
 	while (it != numbers.begin()) {
 		--it;
-		cout << *it;
+		cout << *it << ' ';
 	}
 
 }
-
+/*
 int main() {
 	PrintVectorPart({ 6, 1, 8, -5, 4 });
 	cout << endl;
@@ -30,4 +29,4 @@ int main() {
 	PrintVectorPart({ 6, 1, 8, 5, 4 });
 	cout << endl;
 	return 0;
-}
+}*/
