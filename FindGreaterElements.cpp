@@ -1,4 +1,8 @@
-#include "pch.h"
+/*
+Напишите шаблонную функцию FindGreaterElements, принимающую множество elements объектов типа T 
+и ещё один объект border типа T и возвращающую вектор из всех элементов множества, бо́льших border, в возрастающем порядке.
+*/
+
 #include <iostream>
 #include <set>
 #include <vector>
@@ -9,11 +13,11 @@ using namespace std;
 template <typename T>
 vector<T> FindGreaterElements(const set<T>& elements, const T& border) {
 	vector<T> v;
-	auto it = find_if(	elements.begin(),
-						elements.end(),
-						[&border](const T& e) {
-							return e > border;
-						}	);
+	auto it = find_if(elements.begin(),
+			  elements.end(),
+		       	  [&border](const T& e) {
+				return e > border;
+	                 });
 
 	for (it; it != elements.end(); it++) {
 		v.push_back(*it);
