@@ -6,9 +6,22 @@
 using namespace std;
 
 vector<string> SplitIntoWords(const string& s) {
-	auto it = find(s.begin(), s.end(), ' ');
 
-	for (it; )
+	vector<string> v;
+
+	string::const_iterator it = s.begin();
+
+	while (it != s.end()) {
+
+		auto f_it = it;
+		it = find(it, s.end(), ' ');
+		v.push_back(string(f_it,it));
+		
+		if (it != s.end())
+			it++;
+	}
+	
+	return v;
 }
 
 int main() {
