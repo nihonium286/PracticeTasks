@@ -18,10 +18,35 @@ int main() {
 
 	std::cout << std::endl;
 
-	for (int i{}; i < v.size(); i++) {
+	for (size_t i{}; i < v.size(); i++) {
 		std::cout << v[i] << ' ';
 	}
 
+	std::cout << std::endl;
+
+	ctl::Vector<int> v2 = v;
+
+	for (int i : v2) {
+		std::cout << i << ' ';
+	}
+
+	std::cout << std::endl;
+
+	ctl::Vector<char> v3(10);
+
+	v3.assign(3, 'a');
+
+	for (int i : v3) {
+		std::cout << i << ' ';
+	}
+
+	std::cout << std::endl;
+
+	for (auto i : v3) {
+		std::cout << i << ' ';
+	}
+
+	std::cout << std::endl;
 
 	while(1){}
 	return 0;
