@@ -9,6 +9,10 @@ namespace ctl
 		Vector(const size_t&);
 		~Vector();
 
+		Vector& operator=(const Vector&);
+
+		void assign(size_t, const T&);
+
 		T& front();
 		T& back();
 		void push_back(const T&);

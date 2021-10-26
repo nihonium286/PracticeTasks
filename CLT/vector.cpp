@@ -14,10 +14,30 @@ Vector<T>::Vector(const size_t& size) :
 }
 
 template<typename T>
-Vector<T>::Vector():
+Vector<T>::Vector() :
 	m_pBegin(0),
-	m_pEnd(0)
+	m_pEnd(0),
+	m_size(0)
 {
+}
+template<typename T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
+	Vector<T> v;
+	v.m_pBegin = other.m_pBegin;
+	v.m_pEnd = other.m_pEnd;
+	v.m_size = other.m_size;
+
+	return v;
+}
+
+template<typename T>
+void Vector<T>::assign(size_t count, const T& value) {
+	m_size = count;
+	m_pBegin = new T[m_size];
+	m_pEnd = m_pBegin + m_size;
+	for (T* it = m_pBegin; it != m_pEnd; ++it) {
+		*it = value;
+	}
 }
 
 template<typename T>
