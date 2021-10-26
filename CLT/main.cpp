@@ -48,6 +48,33 @@ int main() {
 
 	std::cout << std::endl;
 
+	char* arr;
+	arr = v3.data();
+
+	for (size_t i{}; i < sizeof(arr); i++) {
+		std::cout << arr[i] << ' ';
+	}
+
+	std::cout << sizeof(arr) << std::endl; // why arr contains 4 elements?
+
+	for (size_t i{}; i < v.size(); i++) {  // exception is thrown if i is out of range of v
+		std::cout << v.at(i) << ' ';
+	}
+
+	std::cout << std::endl;
+
+	ctl::Vector<int> v4;
+
+	std::cout << v3.empty() << ' ' << v4.empty() << std::endl;
+
+	//v4.pop_back();  Calling pop_back on an empty container results in undefined behavior.
+
+	v4.push_back(4);
+
+	std::cout << v4[0];
+
+	std::cout << std::endl;
+
 	while(1){}
 	return 0;
 }

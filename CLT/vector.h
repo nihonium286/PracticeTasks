@@ -1,4 +1,6 @@
 #pragma once
+#include <stdexcept>
+
 namespace ctl
 {
 	template<typename T>
@@ -16,12 +18,17 @@ namespace ctl
 		T& front();
 		T& back();
 		void push_back(const T&);
+		void pop_back(); 
 		size_t size() const;
+		T* data() const;
+
+		bool empty() const;
 
 		T* begin();
 		T* end();
 
 		T& operator[](const size_t&);
+		T& at(const size_t&);
 
 	private:
 		T* m_pBegin;

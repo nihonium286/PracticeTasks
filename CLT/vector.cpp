@@ -62,6 +62,11 @@ size_t Vector<T>::size() const {
 }
 
 template<typename T>
+T* Vector<T>::data() const {
+	return m_pBegin;
+}
+
+template<typename T>
 void Vector<T>::push_back(const T& value){
 	m_size++;
 	T* new_begin = new T[m_size];
@@ -77,6 +82,13 @@ void Vector<T>::push_back(const T& value){
 
 }
 
+// quite interesting behavior
+template<typename T> 
+void Vector<T>::pop_back() {
+	m_size--;
+	m_pEnd--;
+}
+
 template<typename T>
 T* Vector<T>::begin() {
 	return m_pBegin;
@@ -89,5 +101,23 @@ T* Vector<T>::end() {
 
 template<typename T>
 T& Vector<T>::operator[](const size_t& pos) {
+	if (pos > m_size - 1) {
+		std::out_of_range ex("element out of range");
+		throw ex;
+	}
 	return *(m_pBegin + pos);
+}
+
+template<typename T>
+T& Vector<T>::at(const size_t& pos) {
+	if (pos > m_size - 1) {
+		std::out_of_range ex("element out of range");
+		throw ex;
+	}
+	return *(m_pBegin + pos);
+}
+
+template<typename T>
+bool Vector<T>::empty() const {
+	return m_pBegin == m_pEnd;
 }
