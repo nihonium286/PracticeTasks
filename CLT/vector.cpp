@@ -17,9 +17,10 @@ template<typename T>
 Vector<T>::Vector() :
 	m_pBegin(0),
 	m_pEnd(0),
-	m_size(0)
+	m_size(0) 
 {
 }
+
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& other) {
 	Vector<T> v;
@@ -82,7 +83,6 @@ void Vector<T>::push_back(const T& value){
 
 }
 
-// quite interesting behavior
 template<typename T> 
 void Vector<T>::pop_back() {
 	m_size--;

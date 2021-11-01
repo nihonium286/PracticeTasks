@@ -1,4 +1,5 @@
 #include "vector.cpp"
+#include "algorithm.h"
 #include <iostream>
 
 int main() {
@@ -72,6 +73,22 @@ int main() {
 	v4.push_back(4);
 
 	std::cout << v4[0];
+
+	std::cout << std::endl;
+
+	std::cout << *ctl::min(v.begin(), v.end()) << ' ' << *ctl::max(v.begin(), v.end()) << std::endl;
+
+	ctl::Vector<int> v5(2);
+	
+	v5.push_back(5);
+	v5.push_back(3);
+	v5.push_back(8);
+
+	ctl::selectionSort(v5.begin(), v5.end());
+
+	for (int x : v5) {
+		std::cout << x << ' ';
+	}
 
 	std::cout << std::endl;
 
