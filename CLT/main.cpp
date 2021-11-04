@@ -1,4 +1,5 @@
 #include "vector.cpp"
+#include "pair.h"
 #include "algorithm.h"
 #include <iostream>
 
@@ -84,6 +85,8 @@ int main() {
 	v5.push_back(3);
 	v5.push_back(8);
 
+	std::cout << *min(v5.begin(), v5.end()) << ' ' << *max(v5.begin(), v5.end()) << std::endl;
+
 	ctl::selectionSort(v5.begin(), v5.end());
 
 	for (int x : v5) {
@@ -91,6 +94,12 @@ int main() {
 	}
 
 	std::cout << std::endl;
+
+	ctl::Pair<int, char> p(2, 'c');
+	ctl::Pair<int, char> p2(p);
+	ctl::Pair<float, int> p3();
+
+	std::cout << p.first << ' ' << p.second << std::endl << p2.first << ' ' << p2.second << std::endl;
 
 	while(1){}
 	return 0;

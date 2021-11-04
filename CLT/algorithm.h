@@ -36,7 +36,7 @@ namespace ctl
 
 
 	template <typename It>
-	pair<It,It> minmax(It first, It last) { // TODO: pair type template
+	Pair<It,It> minmax(It first, It last) {
 		It min_v = first;
 		It max_v = first;
 		for (It it = first; it != last; ++it) {
